@@ -28,7 +28,7 @@ resource "azurerm_monitor_activity_log_alert" "main" {
   name                = "example-activitylogalert"
   resource_group_name = data.azurerm_resource_group.example.name
   scopes              = [data.azurerm_resource_group.example.id]
-  description         = "This alert will monitor a specific storage account updates."
+  description         = "This alert will monitor NSG updates."
 
   criteria {
     resource_id    = azurerm_network_security_group.example.id
