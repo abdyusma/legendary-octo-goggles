@@ -1,6 +1,6 @@
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
+data "azurerm_resource_group" "example" {
+  name     = "rahman"
+  location = "East US"
 }
 
 resource "azurerm_monitor_action_group" "main" {
