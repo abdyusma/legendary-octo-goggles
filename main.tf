@@ -16,8 +16,8 @@ resource "azurerm_monitor_action_group" "main" {
 
 resource "azurerm_network_security_group" "example" {
   name                = "acceptanceTestSecurityGroup1"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = data.azurerm_resource_group.example.location
+  resource_group_name = data.azurerm_resource_group.example.name
 
   security_rule {
     name                       = "test123"
@@ -38,8 +38,8 @@ resource "azurerm_network_security_group" "example" {
 
 resource "azurerm_monitor_activity_log_alert" "main" {
   name                = "example-activitylogalert"
-  resource_group_name = azurerm_resource_group.example.name
-  scopes              = [azurerm_resource_group.example.id]
+  resource_group_name = data.azurerm_resource_group.example.name
+  scopes              = [data.azurerm_resource_group.example.id]
   description         = "This alert will monitor a specific storage account updates."
 
   criteria {
