@@ -1,11 +1,10 @@
 data "azurerm_resource_group" "example" {
   name     = "rahman"
-  location = "East US"
 }
 
 resource "azurerm_monitor_action_group" "main" {
   name                = "example-actiongroup"
-  resource_group_name = azurerm_resource_group.example.name
+  resource_group_name = data.azurerm_resource_group.example.name
   short_name          = "p0action"
 
   webhook_receiver {
