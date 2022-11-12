@@ -11,7 +11,7 @@ terraform {
     organization = "rahmandemo"
 
     workspaces {
-      name = "octopus-prime"
+      name = "legendary-octo-goggles"
     }
   }
   required_version = ">= 1.1.0"
