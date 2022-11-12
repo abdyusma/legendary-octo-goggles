@@ -2,17 +2,6 @@ data "azurerm_resource_group" "example" {
   name     = "rahman"
 }
 
-resource "azurerm_monitor_action_group" "main" {
-  name                = "example-actiongroup"
-  resource_group_name = data.azurerm_resource_group.example.name
-  short_name          = "p0action"
-
-  webhook_receiver {
-    name        = "callmyapi"
-    service_uri = "http://example.com/alert"
-  }
-}
-
 resource "azurerm_network_security_group" "example" {
   name                = "acceptanceTestSecurityGroup1"
   location            = data.azurerm_resource_group.example.location
@@ -45,13 +34,5 @@ resource "azurerm_monitor_activity_log_alert" "main" {
     resource_id    = azurerm_network_security_group.example.id
     operation_name = "Microsoft.Network/networkSecurityGroups/write"
     category       = "Recommendation"
-  }
-
-  action {
-    action_group_id = azurerm_monitor_action_group.main.id
-
-    webhook_properties = {
-      from = "terraform"
-    }
   }
 }
